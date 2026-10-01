@@ -20,7 +20,7 @@ class PuzzleGame:
         self.__board = PuzzleBoard(self.__processor.split(self.__original), grid_size)
 
         # Scramble: all random transformations generated and applied at once.
-        for transformation in Scrambler(grid_size).generate():
+        for transformation in Scrambler(grid_size).generate(self.__board):
             self.__board.apply(transformation)
 
         self.__moves = 0
@@ -114,9 +114,16 @@ class PuzzleGame:
         self.__finished = True
 
     def __make_move(self, transformation):
+        # Apply the player's action first, then update all state from the new board.
         self.__board.apply(transformation)
         self.__moves += 1
+
+        # Every completed move clears selection. This keeps the logical state
+        # consistent with the GUI: if there is no selection border, no tile is
+        # still waiting to be swapped on the next left click.
+        self.__selected = None
         self.__hint = None                  # hint circles disappear after the next move
+
+        # Completion is checked only after the transformation has been applied.
         if self.__board.is_solved():
             self.__finished = True
-            self.__selected = None
