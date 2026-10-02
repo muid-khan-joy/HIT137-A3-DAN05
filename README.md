@@ -16,6 +16,10 @@ This repository contains the three-member implementation of the HIT137 Group Ass
 
 ```text
 .
+├── Image
+│   ├── game-ui-screen.png
+│   ├── hello.jpg
+│   └── solve-game-screen.png
 ├── Member 1
 │   ├── game.py
 │   ├── puzzle_board.py
@@ -68,6 +72,17 @@ This repository contains the three-member implementation of the HIT137 Group Ass
 - Selection is always cleared after rotate, flip or swap so the visible border and logical selection always match
 - Final correct-tile tick and 100% progress are rendered before the completion dialog appears
 - Centralized GUI callback and move error handling
+
+
+# Game Preview
+
+##  Main Game Screen
+
+![](./Image/game-ui-screen.png)
+
+##  Puzzle Solve Screen
+
+![](./Image/solve-game-screen.png)
 
 ## Setup
 
