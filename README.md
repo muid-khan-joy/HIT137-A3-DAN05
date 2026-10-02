@@ -1,85 +1,131 @@
 # HIT137 Assignment 3
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
-![Tkinter](https://img.shields.io/badge/GUI-Tkinter-green)
-![OpenCV](https://img.shields.io/badge/OpenCV-Image%20Processing-orange?logo=opencv&logoColor=white)
-![GitHub](https://img.shields.io/badge/Version%20Control-GitHub-black?logo=github)
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
-![Semester](https://img.shields.io/badge/Semester-S2%202026-purple)
-
 ## Image Puzzle Game
 
-This repository contains the group project for **HIT137 - Group Assignment 3, Semester 2, 2026**.
+This repository contains the three-member implementation of the HIT137 Group Assignment 3 image puzzle game. The program uses Python, Tkinter and OpenCV and is started from the root `main.py` file.
 
-The project is a desktop image puzzle game developed using **Python, Tkinter, and OpenCV**. Users can load an image, choose a grid size, and solve the puzzle by swapping, rotating, and flipping image tiles.
+## Team and completed work
 
-## Team Members
-
-| Name | Student ID |
-|---|---|
-| Muid Khan Joy | S373799 |
-| Abishek Rajeshkumar | S367359 |
-| Saurav Suniara | S408811 |
-| Trong Hieu Pham | S406541 |
-
-## Main Features
-
-- Load JPG, PNG, and BMP images
-- 3×3, 4×4, and 5×5 puzzle grids
-- Image tile swapping
-- Tile rotation
-- Horizontal and vertical flipping
-- Move tracking
-- Incorrect tile tracking
-- Hint system
-- Automatic puzzle completion detection
-- Solve option
-- Object-Oriented Programming structure
-
-## Technologies
-
-![Python](https://img.shields.io/badge/Python-Programming-blue?logo=python&logoColor=white)
-![Tkinter](https://img.shields.io/badge/Tkinter-Desktop%20GUI-green)
-![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-orange?logo=opencv&logoColor=white)
-![Git](https://img.shields.io/badge/Git-Version%20Control-red?logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-Collaboration-black?logo=github)
-
-## Proposed Task Distribution
-
-| Member | Work Area | Main Tasks |
+| Member | Student ID | Main contribution |
 |---|---|---|
-| Member 1 | Core OOP and Game State | Tile class, PuzzleGame class, constructors, methods, encapsulation, tile position/orientation, game state management |
-| Member 2 | Image Processing and Scrambling | Image loading, resizing, crop/pad, grid creation, tile splitting/reassembly, swap/rotate/flip transformations, random scrambling |
-| Member 3 | Tkinter GUI and User Interaction | Main window, grid selector, buttons, image display, tile selection, mouse controls, overlays, GUI updates |
-| Member 4 | Gameplay and Error Handling | Move counter, incorrect-tile counter, hint system, solve function, completion detection, reset logic, invalid input handling |
+| Trong Hieu Pham | S406541 | Member 1: core OOP and game state, including `Tile`, `PuzzleBoard`, `PuzzleGame`, selection, moves, hints, solving and completion state |
+| Abishek Rajeshkumar | S367359 | Member 2: image loading and preparation, crop/pad strategies, grid splitting/reassembly, transformation hierarchy and random scrambling |
+| Muid Khan Joy | S373799 | Member 3: Tkinter GUI, side-by-side display, mouse/keyboard interaction, overlays, counters, progress, timer, error messages, integration and final testing |
 
-> **Note:** The task distribution above is only a proposed initial plan.  
-> The final allocation of tasks to individual team members has **not yet been confirmed** and may be changed after team discussion.
+## Project structure
 
-## Project Status
+```text
+.
+├── Member 1
+│   ├── game.py
+│   ├── puzzle_board.py
+│   └── tile.py
+├── Member 2
+│   ├── image_processor.py
+│   └── transformations.py
+├── Member 3
+│   └── puzzle_gui.py
+├── tests
+│   └── test_core_integration.py
+├── github_link.txt
+├── main.py
+├── README.md
+└── requirements.txt
+```
 
-![Progress](https://img.shields.io/badge/Development-In%20Progress-yellow)
+## Required features implemented
 
-Initial project setup is in progress. The team will finalise the task distribution before starting the main implementation.
+- JPG, JPEG, PNG and BMP image loading
+- 3 × 3, 4 × 4 and 5 × 5 grids
+- Aspect-ratio-preserving image preparation
+- Even square tile sizes
+- Random swap, rotate and flip transformations
+- Transformation count scales with grid size
+- No tile position targeted twice during the initial scramble
+- Original image and puzzle displayed side by side
+- Faint grid over the transformed image
+- Left click to select, deselect and swap
+- Right click to rotate 90 degrees clockwise
+- Shift + left click to flip horizontally
+- Green tick on tiles in the correct position and orientation
+- Move counter and incorrect-tile counter
+- Three-hint limit with blue markers
+- Hint markers disappear after the next move
+- Solve button
+- Completion detection and input locking
+- Cancelled dialog, invalid image and off-image click handling
+- Full reset when another image is loaded
 
-## Collaboration
+## Extra interface features
 
-All team members will use this repository to:
+- Three named difficulty levels mapped to the required grid sizes
+- Elapsed round timer
+- Solved-progress bar
+- Rescramble button for the current image
+- Keyboard shortcuts for opening an image, hints and rescrambling
+- Dark custom Tkinter theme
+- Highlighted control guide in the top-right of the window
+- Selection is always cleared after rotate, flip or swap so the visible border and logical selection always match
+- Final correct-tile tick and 100% progress are rendered before the completion dialog appears
+- Centralized GUI callback and move error handling
 
-- Contribute their assigned work
-- Track development progress
-- Review and integrate code
-- Test the application
-- Maintain the final project files
+## Setup
 
-## Course Information
+Create and activate a virtual environment.
 
-| Item | Details |
+### Windows
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### macOS / Linux
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Install the Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run the application
+
+Run from the repository root:
+
+```bash
+python main.py
+```
+
+If your system uses `python3` for Python 3:
+
+```bash
+python3 main.py
+```
+
+## Controls
+
+| Input | Action |
 |---|---|
-| Unit | HIT137 |
-| Assessment | Group Assignment 3 |
-| Semester | Semester 2, 2026 |
-| Project | Image Puzzle Game |
-| Language | Python |
-| GUI | Tkinter |
-| Image Processing | OpenCV |
+| Left click | Select a tile |
+| Left click another tile | Swap the two tiles |
+| Left click selected tile | Deselect it |
+| Right click | Rotate a tile 90° clockwise and clear any previous selection |
+| Shift + left click | Flip a tile horizontally and clear any previous selection |
+| Hint button or H | Show one incorrect tile and its correct home position |
+| Rescramble button or R | Start a new scramble with the same image |
+| Solve button | Restore the complete puzzle immediately |
+| Ctrl + O | Open an image |
+
+## Core test
+
+The integration test checks all three grid sizes, transformation planning, unique scramble targets, hints, move counting, selection clearing after rotate/flip, and solving without opening the GUI.
+
+```bash
+python tests/test_core_integration.py
+```
+
